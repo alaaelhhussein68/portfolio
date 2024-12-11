@@ -31,6 +31,11 @@
   <div id="anotherJoke"></div>
 </section>
 
+    <section>
+  <h2>Galerie de photos</h2>
+  <div id="pexels-photos" style="display: flex; flex-wrap: wrap; gap: 1rem;"></div>
+</section>
+
   </main>
   <script>
   document.getElementById("getAnotherJoke").addEventListener("click", function() {
@@ -50,6 +55,36 @@
       });
   });
 </script>
+
+
+  <script>
+  const apiKey = "9yKvuAjAzBgXNiw3vDhImSCcptZA9Hf2pqOkOfiWPM1LVg9dldDIytIN"; // Ta clé API Pexels
+  const url = "https://api.pexels.com/v1/search?query=nature&per_page=6";
+
+  fetch(url, {
+    headers: {
+      Authorization: apiKey
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      const photosContainer = document.getElementById("pexels-photos");
+      data.photos.forEach(photo => {
+        const img = document.createElement("img");
+        img.src = photo.src.medium; // URL de l'image
+        img.alt = photo.photographer; // Nom du photographe
+        img.style.width = "200px"; // Largeur des images
+        img.style.borderRadius = "8px"; // Coins arrondis
+        img.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)"; // Ombre légère
+        photosContainer.appendChild(img);
+      });
+    })
+    .catch(error => {
+      console.error("Erreur lors de la récupération des photos :", error);
+      document.getElementById("pexels-photos").innerText = "Impossible de charger les photos.";
+    });
+</script>
+
 
 </body>
 </html>

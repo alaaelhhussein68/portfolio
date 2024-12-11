@@ -1,0 +1,44 @@
+/* Style général */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Header */
+header {
+  background: #0070ac;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* Sections */
+section {
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 800px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+section h2 {
+  color: #0070ac;
+}
+
+/* Liens */
+a {
+  color: #0070ac;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

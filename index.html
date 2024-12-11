@@ -26,5 +26,19 @@
       <p><a href="travaux.html">Voir mes travaux</a></p>
     </section>
   </main>
+    <script>
+    async function getQuote() {
+      try {
+        const response = await fetch('https://api.quotable.io/random');
+        const data = await response.json();
+        document.getElementById('quote').innerText = data.content;
+      } catch (error) {
+        document.getElementById('quote').innerText = "Impossible de charger la citation.";
+        console.error("Erreur :", error);
+      }
+    }
+    // Charger une citation dès le chargement de la page
+    getQuote();
+  </script>
 </body>
 </html>

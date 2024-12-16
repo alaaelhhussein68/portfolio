@@ -43,22 +43,24 @@ Je suis également à la recherche d'un stage en développement web pour mettre 
 </section>
   </main>
   
-    <h1>Image depuis Unsplash API</h1>
-    <img id="image" alt="Image depuis Unsplash">
-    <p id="author"></p>
-  
 <script>
-        const apiKey = 'TON_ACCES_KEY'; // Remplace avec ta clé d'accès API
-        const apiUrl = 'https://api.unsplash.com/photos/random?query=developer&client_id=' + apiKey;
+  document.getElementById("getAnotherJoke").addEventListener("click", function() {
+    const url = "https://official-joke-api.appspot.com/random_joke";
 
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("image").src = data.urls.regular;
-                document.getElementById("author").innerText = `Photo par ${data.user.name}`;
-            })
-            .catch(error => console.error("Erreur de récupération :", error));
-    </script>
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("anotherJoke").innerHTML = `
+          <p>${data.setup}</p>
+          <p><strong>${data.punchline}</strong></p>
+        `;
+      })
+      .catch(error => {
+        document.getElementById("anotherJoke").innerText = "Impossible de récupérer une autre blague.";
+        console.error("Erreur lors de la récupération de l'API :", error);
+      });
+  });
+</script>
 
 </body>
 </html>
